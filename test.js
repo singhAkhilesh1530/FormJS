@@ -301,6 +301,8 @@ button.addEventListener('mouseout', (e) => {
 })
 */
 
+
+//Storing single item in LocalStorage
 /*
 const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
@@ -317,10 +319,15 @@ function onSubmit(e){
         msg.innerHTML = 'Please enter value';
     }
     else{
+        localStorage.setItem('name', nameInput.value);
+        localStorage.setItem('email', emailInput.value);
         console.log('Success');
     }
 }
 */
+
+
+//Storing multiple item in LocalStorage
 
 const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
@@ -329,17 +336,20 @@ const emailInput = document.querySelector('#email');
 myForm.addEventListener('submit', onSubmit);
 
 function onSubmit(e){
+
     e.preventDefault();
 
-    if(nameInput.value === '' || emailInput === ''){
-        msg.classList.add('error');
-        msg.innerHTML = 'Please enter value';
+    const obj = {
+        name: name,
+        email: email
     }
-    else{
-        localStorage.setItem('name', nameInput.value);
-        localStorage.setItem('email', emailInput.value);
-    }
+
+    obj.name = nameInput.value;
+    obj.email = emailInput.value;
+
+    localStorage.setItem('detail', JSON.stringify(obj));
 }
 
-console.log(localStorage.setItem('name', nameInput.value));
-console.log(localStorage.setItem('email', emailInput.value));
+
+
+
