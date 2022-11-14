@@ -327,7 +327,31 @@ function onSubmit(e){
 */
 
 
-//Storing multiple item in LocalStorage
+//Storing single item as object
+/*
+const myForm = document.querySelector('#my-form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+
+myForm.addEventListener('submit', onSubmit);
+
+function onSubmit(e){
+
+    e.preventDefault();
+
+    const obj = {
+        name: name,
+        email: email
+    }
+
+    obj.name = nameInput.value;
+    obj.email = emailInput.value;
+
+    localStorage.setItem('details', JSON.stringify(obj));
+}
+*/
+
+//Storing multiple items
 
 const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
@@ -347,9 +371,5 @@ function onSubmit(e){
     obj.name = nameInput.value;
     obj.email = emailInput.value;
 
-    localStorage.setItem('detail', JSON.stringify(obj));
+    localStorage.setItem(emailInput.value, JSON.stringify(obj));
 }
-
-
-
-
